@@ -1,10 +1,11 @@
 import express, { Request, Response } from 'express';
+import getFiles from './routes/getFiles';
+import upload from './routes/upload';
 
 const app = express();
 
-app.get("/", async (req: Request, res: Response) => {
-  res.send("Hola.");
-})
+app.post("/api/upload", upload);
+app.get("/api/files", getFiles);
 
 express.static("../client/build");
 
