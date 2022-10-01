@@ -1,8 +1,8 @@
-import { Box, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Box, createTheme, ThemeProvider, Typography } from "@mui/material";
 import FilesList from "./Components/FilesList";
 import UploadForm from "./Components/UploadForm";
 import { EPages } from "./types";
+import "./basic.css"
 
 function App() {
 
@@ -17,12 +17,22 @@ function App() {
     }
   }
 
+  const theme = createTheme({
+    palette: {
+      mode: "dark"
+    },
+    typography: {
+      fontSize: 12,
+    },
+  });
 
   return (
-      <Box display="flex" flexWrap="wrap" justifyContent="center">
-        <Typography style={{ textAlign: "center", width: "100%" }} variant="h2">Unlimited Storage!!</Typography>
-        {renderPage()}
-      </Box>
+      <ThemeProvider theme={theme}>
+        <Box display="flex" flexWrap="wrap" justifyContent="center">
+          <Typography style={{ textAlign: "center", width: "100%" }} variant="h2">Unlimited Storage!!</Typography>
+          {renderPage()}
+        </Box>
+      </ThemeProvider>
   );
 }
 
