@@ -1,0 +1,14 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "unlimited_storage_local",
+      "database": "unlimited_storage",
+      "username": "dev",
+      "password": "unlimited_storage_dev"
+    }
+  ]
+}
