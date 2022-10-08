@@ -12,3 +12,5 @@ WORKDIR api
 RUN npm i
 
 CMD [ "npm", "start" ]
+
+EXPOSE 3030
