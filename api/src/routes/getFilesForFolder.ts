@@ -3,13 +3,8 @@ import Files from "../db/Files.table";
 
 export default async function(req: Request, res: Response) {
   try {
-    const names = req.query.names;
-    let files;
-    if (names) {
-      files = await Files.findForNames(names.toString().split(","));
-    } else {
-      files = await Files.findAll();
-    }
+    const folderId = req.params.folderId;
+    const files = await Files.findForFolderId(folderId);
     res.json({ files });
   } catch (err: any) {
     console.error(err);

@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import Files from "../db/Files.table";
+import Folders from "../db/Folders.table";
 
 export default async function(req: Request, res: Response) {
   try {
     const names = req.query.names;
-    let files;
+    let folders;
     if (names) {
-      files = await Files.findForNames(names.toString().split(","));
+      folders = await Folders.findForNames(names.toString().split(","));
     } else {
-      files = await Files.findAll();
+      folders = await Folders.findAll();
     }
-    res.json({ files });
+    res.json({ folders });
   } catch (err: any) {
     console.error(err);
     if (err.message?.match("400")) {
