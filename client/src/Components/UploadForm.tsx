@@ -12,9 +12,22 @@ const UploadForm = () => {
   const [isUploading, setIsUploading] = useState<boolean>(false);
 
   async function handleSubmit() {
-    setIsUploading(true);
-    console.log("Submitting", files);
-    setTimeout(() => window.location.reload(), 5000);
+    try {
+      setIsUploading(true);
+      const formData = new FormData();
+      files.forEach(file => formData.append("files", file, file.name));
+      const requestOptions: RequestInit = {
+        method: 'POST',
+        body: formData,
+        redirect: 'follow'
+      };
+      await fetch("/api/upload", requestOptions);
+      window.location.href = "/files/view";
+    } catch (err) {
+      alert("Something went wrong uploading the files!");
+    } finally {
+      setIsUploading(false);
+    }
   }
 
   if (isUploading) {

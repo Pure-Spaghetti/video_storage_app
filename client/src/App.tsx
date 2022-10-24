@@ -3,6 +3,7 @@ import FilesList from "./Components/FilesList";
 import UploadForm from "./Components/UploadForm";
 import { EPages } from "./types";
 import "./basic.css"
+import Nav from "./Components/Nav";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
 
   return (
       <ThemeProvider theme={theme}>
+        <Nav />
         <Box display="flex" flexWrap="wrap" justifyContent="center">
           <Typography style={{ textAlign: "center", width: "100%" }} variant="h2">Unlimited Storage!!</Typography>
           {renderPage()}
